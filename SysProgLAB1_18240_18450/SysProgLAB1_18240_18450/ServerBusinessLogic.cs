@@ -28,56 +28,50 @@ namespace SysProgLAB1_18240_18450
             }
             return returnLista;
         }
-        public static void ZahtevPrikazivanjaListeFajlova(string requestUrl, HttpListenerResponse response)
+        public static async void ZahtevPrikazivanjaListeFajlova(string requestUrl, HttpListenerResponse response)
         {
-            _ = Task.Run(async () =>
+            string elementi;
+            string res = "<html><head><title>";
+
+            if (_cache.SadrziKljuc(requestUrl))
             {
-                string elementi;
-                string res = "<html><head><title>";
+                elementi = _cache.CitajIzKesa(requestUrl);
+            }
+            else
+            {
+                elementi = HTMLGenerator.KreirajElemente(await PretraziKljucnuRecAsync(Directory.GetCurrentDirectory(), requestUrl));
+                _cache.UpisiUKes(requestUrl, elementi);
+            }
 
-                if (_cache.SadrziKljuc(requestUrl))
-                {
-                    elementi = _cache.CitajIzKesa(requestUrl);
-                }
-                else
-                {
-                    elementi = HTMLGenerator.KreirajElemente(await PretraziKljucnuRecAsync(Directory.GetCurrentDirectory(), requestUrl));
-                    _cache.UpisiUKes(requestUrl, elementi);
-                }
+            if (elementi.Contains("<h3>"))
+            {
+                response.StatusCode = (int)HttpStatusCode.NotFound;
+                response.StatusDescription = "Not Found";
+            }
+            else
+            {
+                response.StatusCode = (int)HttpStatusCode.OK;
+                response.StatusDescription = "OK";
+            }
 
-                if (elementi.Contains("<h3>"))
-                {
-                    response.StatusCode = (int)HttpStatusCode.NotFound;
-                    response.StatusDescription = "Not Found";
-                }
-                else
-                {
-                    response.StatusCode = (int)HttpStatusCode.OK;
-                    response.StatusDescription = "OK";
-                }
+            res += $"{response.StatusCode} - {response.StatusDescription}</title><body><ul></h2>{elementi}</ul></body></html>";
 
-                res += $"{response.StatusCode} - {response.StatusDescription}</title><body><ul></h2>{elementi}</ul></body></html>";
-
-                byte[] resBinary = Encoding.UTF8.GetBytes(res);
-                response.ContentLength64 = resBinary.Length;
-                response.OutputStream.Write(resBinary, 0, resBinary.Length);
-                response.OutputStream.Close();
-            });
+            byte[] resBinary = Encoding.UTF8.GetBytes(res);
+            response.ContentLength64 = resBinary.Length;
+            response.OutputStream.Write(resBinary, 0, resBinary.Length);
+            response.OutputStream.Close();
         }
         public static void ZahtevPreuzimanjaFajla(string requestUrl, HttpListenerResponse response)
         {
-            _ = Task.Run(() =>
+            using (FileStream fs = new(requestUrl, FileMode.Open))
             {
-                using (FileStream fs = new(requestUrl, FileMode.Open))
-                {
-                    byte[] byteArray = new byte[fs.Length];
-                    fs.Read(byteArray, 0, byteArray.Length);
-                    response.ContentLength64 = byteArray.Length;
-                    response.AppendHeader("Content-Disposition", "attachment");
-                    response.OutputStream.Write(byteArray, 0, byteArray.Length);
-                    response.OutputStream.Close();
-                }
-            });
+                byte[] byteArray = new byte[fs.Length];
+                fs.Read(byteArray, 0, byteArray.Length);
+                response.ContentLength64 = byteArray.Length;
+                response.AppendHeader("Content-Disposition", "attachment");
+                response.OutputStream.Write(byteArray, 0, byteArray.Length);
+                response.OutputStream.Close();
+            }
         }
     }
 }

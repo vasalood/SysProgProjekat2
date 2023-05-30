@@ -42,7 +42,7 @@ class Program
 
                 if (requestUrl.StartsWith("preuzmi/"))
                 {
-                    requestUrl = requestUrl["preuzmi/".Length..];
+                    requestUrl = requestUrl["preuzmi/".Length..requestUrl.Length];
                     ServerBusinessLogic.ZahtevPreuzimanjaFajla(requestUrl, response);
                 }
                 else ServerBusinessLogic.ZahtevPrikazivanjaListeFajlova(requestUrl, response);
