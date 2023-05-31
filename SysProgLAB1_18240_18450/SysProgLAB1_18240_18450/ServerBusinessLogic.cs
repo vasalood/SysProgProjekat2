@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
@@ -10,23 +11,27 @@ namespace SysProgLAB1_18240_18450
     internal class ServerBusinessLogic
     {
         private static Cache _cache = new(3);
-        private static async Task<List<string>> PretraziKljucnuRecAsync(string path, string keyword)
+        private static Task<ConcurrentQueue<string>> PretraziKljucnuRecAsync(string path, string keyword)
         {
-            List<string> returnLista = new List<string>();
-            if (!string.IsNullOrEmpty(keyword))
+            return Task.Run(() =>
             {
-                string[] files = await Task.Run(() => Directory.GetFiles(path));
-                
-                Parallel.ForEach(files, file =>
+                ConcurrentQueue<string> returnQueue = new ConcurrentQueue<string>();
+
+                if (!string.IsNullOrEmpty(keyword))
                 {
-                    string fileName = Path.GetFileName(file);
-                    if (fileName.Contains(keyword))
+                    string[] files = Directory.GetFiles(path);
+
+                    Parallel.ForEach(files, file =>
                     {
-                        returnLista.Add(fileName);
-                    }
-                });
-            }
-            return returnLista;
+                        string fileName = Path.GetFileName(file);
+                        if (fileName.Contains(keyword))
+                        {
+                            returnQueue.Enqueue(fileName);
+                        }
+                    });
+                }
+                return returnQueue;
+            });
         }
         public static async void ZahtevPrikazivanjaListeFajlova(string requestUrl, HttpListenerResponse response)
         {

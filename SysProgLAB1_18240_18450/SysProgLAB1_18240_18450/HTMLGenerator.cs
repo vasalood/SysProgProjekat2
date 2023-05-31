@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -12,11 +13,11 @@ namespace SysProgLAB1_18240_18450
         {
             return $"<li><a href=\"http://localhost:5050/preuzmi/{fileName}\" target=\"_blank\">{fileName}</a></li>";
         }
-        public static string KreirajElemente(List<string> listOfFiles)
+        public static string KreirajElemente(ConcurrentQueue<string> queueOfFiles)
         {
             string aElements =
-                listOfFiles.Count > 0 ?
-                string.Join("", listOfFiles.Select(HTMLAElement))
+                queueOfFiles.Count > 0 ?
+                string.Join("", queueOfFiles.Select(HTMLAElement))
                 : "<h3>Nema fajlova koji zadovoljavaju zadate kriterijume.</h3>";
 
             return aElements;

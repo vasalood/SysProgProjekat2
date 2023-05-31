@@ -13,7 +13,10 @@ class Program
             "http://127.0.0.1:5050/",
         };
 
-        Parallel.ForEach(prefixes, listener.Prefixes.Add);
+        foreach (string prefix in prefixes)
+        {
+            listener.Prefixes.Add(prefix);
+        }
 
         listener.Start();
 
