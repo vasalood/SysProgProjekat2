@@ -18,7 +18,7 @@ namespace SysProgLAB1_18240_18450
             string aElements =
                 queueOfFiles.Count > 0 ?
                 string.Join("", queueOfFiles.Select(HTMLAElement))
-                : "<h3>Nema fajlova koji zadovoljavaju zadate kriterijume.</h3>";
+                : "ERROR<h3>Nema fajlova koji zadovoljavaju zadate kriterijume.</h3>";
 
             return aElements;
         }

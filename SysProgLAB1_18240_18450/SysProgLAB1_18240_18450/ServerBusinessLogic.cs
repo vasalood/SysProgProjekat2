@@ -11,32 +11,30 @@ namespace SysProgLAB1_18240_18450
     internal class ServerBusinessLogic
     {
         private static Cache _cache = new(3);
-        private static Task<ConcurrentQueue<string>> PretraziKljucnuRecAsync(string path, string keyword)
+        private static ConcurrentQueue<string> PretraziKljucnuRec(string path, string keyword)
         {
-            return Task.Run(() =>
+            ConcurrentQueue<string> returnQueue = new ConcurrentQueue<string>();
+
+            if (!string.IsNullOrEmpty(keyword))
             {
-                ConcurrentQueue<string> returnQueue = new ConcurrentQueue<string>();
+                string[] files = Directory.GetFiles(path);
 
-                if (!string.IsNullOrEmpty(keyword))
+                Parallel.ForEach(files, file =>
                 {
-                    string[] files = Directory.GetFiles(path);
-
-                    Parallel.ForEach(files, file =>
+                    string fileName = Path.GetFileName(file);
+                    if (fileName.Contains(keyword))
                     {
-                        string fileName = Path.GetFileName(file);
-                        if (fileName.Contains(keyword))
-                        {
-                            returnQueue.Enqueue(fileName);
-                        }
-                    });
-                }
-                return returnQueue;
-            });
+                        returnQueue.Enqueue(fileName);
+                    }
+                });
+            }
+            return returnQueue;
         }
-        public static async void ZahtevPrikazivanjaListeFajlova(string requestUrl, HttpListenerResponse response)
+        public static void ZahtevPrikazivanjaListeFajlova(string requestUrl, HttpListenerResponse response)
         {
             string elementi;
             string res = "<html><head><title>";
+            ConcurrentQueue<string> red = new ConcurrentQueue<string>();
 
             if (_cache.SadrziKljuc(requestUrl))
             {
@@ -44,12 +42,14 @@ namespace SysProgLAB1_18240_18450
             }
             else
             {
-                elementi = HTMLGenerator.KreirajElemente(await PretraziKljucnuRecAsync(Directory.GetCurrentDirectory(), requestUrl));
+                red = PretraziKljucnuRec(Directory.GetCurrentDirectory(), requestUrl);
+                elementi = HTMLGenerator.KreirajElemente(red);
                 _cache.UpisiUKes(requestUrl, elementi);
             }
 
-            if (elementi.Contains("<h3>"))
+            if (elementi.StartsWith("ERROR"))
             {
+                elementi = elementi["ERROR".Length..elementi.Length];
                 response.StatusCode = (int)HttpStatusCode.NotFound;
                 response.StatusDescription = "Not Found";
             }
@@ -59,7 +59,7 @@ namespace SysProgLAB1_18240_18450
                 response.StatusDescription = "OK";
             }
 
-            res += $"{response.StatusCode} - {response.StatusDescription}</title><body><ul></h2>{elementi}</ul></body></html>";
+            res += $"{response.StatusCode} - {response.StatusDescription}</title></head><body><ul></h2>{elementi}</ul></body></html>";
 
             byte[] resBinary = Encoding.UTF8.GetBytes(res);
             response.ContentLength64 = resBinary.Length;
