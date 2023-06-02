@@ -4,7 +4,7 @@ class Program
 {
     const string FAVICON = "favicon.ico";
 
-    static async Task Main()
+    public static void Main()
     {
         HttpListener listener = new HttpListener();
         string[] prefixes = new string[]
@@ -22,12 +22,13 @@ class Program
 
         while (true)
         {
-            ProcessRequest(await listener.GetContextAsync());
+            HttpListenerContext context = listener.GetContext();
+            ProcessRequest(context);
         }
     }
-    static void ProcessRequest(HttpListenerContext context)
+    static async void ProcessRequest(HttpListenerContext context)
     {
-        _ = Task.Run(() =>
+        await Task.Run(() =>
         {
             try
             {

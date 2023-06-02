@@ -13,11 +13,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "F:\\5 ELFAK\\10 Sistemsko programiranje\\4 PROJEKTI\\2 Projekat 2\\ProjekatGit\\SysProgProjekat2\\SysProgLAB1_18240_18450\\SysProgLAB1_18240_18450\\SysProgLAB1_18240_18450.csproj",
+      "projectUniqueName": "C:\\Users\\Vasa\\Downloads\\zaPush\\SysProgProjekat2\\SysProgLAB1_18240_18450\\SysProgLAB1_18240_18450\\SysProgLAB1_18240_18450.csproj",
       "projectName": "SysProgLAB1_18240_18450",
-      "projectPath": "F:\\5 ELFAK\\10 Sistemsko programiranje\\4 PROJEKTI\\2 Projekat 2\\ProjekatGit\\SysProgProjekat2\\SysProgLAB1_18240_18450\\SysProgLAB1_18240_18450\\SysProgLAB1_18240_18450.csproj",
+      "projectPath": "C:\\Users\\Vasa\\Downloads\\zaPush\\SysProgProjekat2\\SysProgLAB1_18240_18450\\SysProgLAB1_18240_18450\\SysProgLAB1_18240_18450.csproj",
       "packagesPath": "C:\\Users\\Vasa\\.nuget\\packages\\",
-      "outputPath": "F:\\5 ELFAK\\10 Sistemsko programiranje\\4 PROJEKTI\\2 Projekat 2\\ProjekatGit\\SysProgProjekat2\\SysProgLAB1_18240_18450\\SysProgLAB1_18240_18450\\obj\\",
+      "outputPath": "C:\\Users\\Vasa\\Downloads\\zaPush\\SysProgProjekat2\\SysProgLAB1_18240_18450\\SysProgLAB1_18240_18450\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\Vasa\\AppData\\Roaming\\NuGet\\NuGet.Config",

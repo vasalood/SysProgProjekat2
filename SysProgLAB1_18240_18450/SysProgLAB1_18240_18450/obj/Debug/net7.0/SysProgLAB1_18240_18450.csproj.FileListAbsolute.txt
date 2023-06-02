@@ -58,3 +58,18 @@ F:\5 ELFAK\10 Sistemsko programiranje\4 PROJEKTI\2 Projekat 2\ProjekatGit\SysPro
 F:\5 ELFAK\10 Sistemsko programiranje\4 PROJEKTI\2 Projekat 2\ProjekatGit\SysProgProjekat2\SysProgLAB1_18240_18450\SysProgLAB1_18240_18450\obj\Debug\net7.0\SysProgLAB1_18240_18450.pdb
 F:\5 ELFAK\10 Sistemsko programiranje\4 PROJEKTI\2 Projekat 2\ProjekatGit\SysProgProjekat2\SysProgLAB1_18240_18450\SysProgLAB1_18240_18450\obj\Debug\net7.0\SysProgLAB1_18240_18450.genruntimeconfig.cache
 F:\5 ELFAK\10 Sistemsko programiranje\4 PROJEKTI\2 Projekat 2\ProjekatGit\SysProgProjekat2\SysProgLAB1_18240_18450\SysProgLAB1_18240_18450\obj\Debug\net7.0\ref\SysProgLAB1_18240_18450.dll
+C:\Users\Vasa\Downloads\zaPush\SysProgProjekat2\SysProgLAB1_18240_18450\SysProgLAB1_18240_18450\obj\Debug\net7.0\SysProgLAB1_18240_18450.csproj.AssemblyReference.cache
+C:\Users\Vasa\Downloads\zaPush\SysProgProjekat2\SysProgLAB1_18240_18450\SysProgLAB1_18240_18450\obj\Debug\net7.0\SysProgLAB1_18240_18450.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Vasa\Downloads\zaPush\SysProgProjekat2\SysProgLAB1_18240_18450\SysProgLAB1_18240_18450\obj\Debug\net7.0\SysProgLAB1_18240_18450.AssemblyInfoInputs.cache
+C:\Users\Vasa\Downloads\zaPush\SysProgProjekat2\SysProgLAB1_18240_18450\SysProgLAB1_18240_18450\obj\Debug\net7.0\SysProgLAB1_18240_18450.AssemblyInfo.cs
+C:\Users\Vasa\Downloads\zaPush\SysProgProjekat2\SysProgLAB1_18240_18450\SysProgLAB1_18240_18450\obj\Debug\net7.0\SysProgLAB1_18240_18450.csproj.CoreCompileInputs.cache
+C:\Users\Vasa\Downloads\zaPush\SysProgProjekat2\SysProgLAB1_18240_18450\SysProgLAB1_18240_18450\obj\Debug\net7.0\SysProgLAB1_18240_18450.dll
+C:\Users\Vasa\Downloads\zaPush\SysProgProjekat2\SysProgLAB1_18240_18450\SysProgLAB1_18240_18450\obj\Debug\net7.0\refint\SysProgLAB1_18240_18450.dll
+C:\Users\Vasa\Downloads\zaPush\SysProgProjekat2\SysProgLAB1_18240_18450\SysProgLAB1_18240_18450\obj\Debug\net7.0\SysProgLAB1_18240_18450.pdb
+C:\Users\Vasa\Downloads\zaPush\SysProgProjekat2\SysProgLAB1_18240_18450\SysProgLAB1_18240_18450\bin\Debug\net7.0\SysProgLAB1_18240_18450.exe
+C:\Users\Vasa\Downloads\zaPush\SysProgProjekat2\SysProgLAB1_18240_18450\SysProgLAB1_18240_18450\bin\Debug\net7.0\SysProgLAB1_18240_18450.deps.json
+C:\Users\Vasa\Downloads\zaPush\SysProgProjekat2\SysProgLAB1_18240_18450\SysProgLAB1_18240_18450\bin\Debug\net7.0\SysProgLAB1_18240_18450.runtimeconfig.json
+C:\Users\Vasa\Downloads\zaPush\SysProgProjekat2\SysProgLAB1_18240_18450\SysProgLAB1_18240_18450\bin\Debug\net7.0\SysProgLAB1_18240_18450.dll
+C:\Users\Vasa\Downloads\zaPush\SysProgProjekat2\SysProgLAB1_18240_18450\SysProgLAB1_18240_18450\bin\Debug\net7.0\SysProgLAB1_18240_18450.pdb
+C:\Users\Vasa\Downloads\zaPush\SysProgProjekat2\SysProgLAB1_18240_18450\SysProgLAB1_18240_18450\obj\Debug\net7.0\SysProgLAB1_18240_18450.genruntimeconfig.cache
+C:\Users\Vasa\Downloads\zaPush\SysProgProjekat2\SysProgLAB1_18240_18450\SysProgLAB1_18240_18450\obj\Debug\net7.0\ref\SysProgLAB1_18240_18450.dll
