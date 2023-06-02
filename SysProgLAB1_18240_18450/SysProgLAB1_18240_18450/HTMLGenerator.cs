@@ -16,9 +16,9 @@ namespace SysProgLAB1_18240_18450
         public static string KreirajElemente(ConcurrentQueue<string> queueOfFiles)
         {
             string aElements =
-                queueOfFiles.Count > 0 ?
+                !queueOfFiles.IsEmpty ?
                 string.Join("", queueOfFiles.Select(HTMLAElement))
-                : "ERROR<h3>Nema fajlova koji zadovoljavaju zadate kriterijume.</h3>";
+                : "ERROR<h3>Greska: Nema fajlova koji zadovoljavaju zadate kriterijume.</h3>";
 
             return aElements;
         }
