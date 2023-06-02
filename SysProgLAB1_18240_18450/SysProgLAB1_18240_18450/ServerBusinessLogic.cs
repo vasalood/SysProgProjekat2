@@ -10,7 +10,7 @@ namespace SysProgLAB1_18240_18450
 {
     internal class ServerBusinessLogic
     {
-        private static Cache _cache = new(3);
+        private static ICache _cache = new ConcurrentCache(3);
         private static ConcurrentQueue<string> PretraziKljucnuRec(string path, string keyword)
         {
             ConcurrentQueue<string> returnQueue = new ConcurrentQueue<string>();
@@ -34,7 +34,6 @@ namespace SysProgLAB1_18240_18450
         {
             string elementi;
             string res = "<html><head><title>";
-            ConcurrentQueue<string> red = new ConcurrentQueue<string>();
 
             if (_cache.SadrziKljuc(requestUrl))
             {
@@ -42,8 +41,7 @@ namespace SysProgLAB1_18240_18450
             }
             else
             {
-                red = PretraziKljucnuRec(Directory.GetCurrentDirectory(), requestUrl);
-                elementi = HTMLGenerator.KreirajElemente(red);
+                elementi = HTMLGenerator.KreirajElemente(PretraziKljucnuRec(Directory.GetCurrentDirectory(), requestUrl));
                 _cache.UpisiUKes(requestUrl, elementi);
             }
 
